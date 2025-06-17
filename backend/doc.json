@@ -1,0 +1,184 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Simple Inventory API",
+    "description": "This is a simple API",
+    "contact": {
+      "email": "you@your-company.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://virtserver.swaggerhub.com/ricaldone-7c2/Autoevaluacion/1.0.0",
+      "description": "SwaggerHub API Auto Mocking"
+    }
+  ],
+  "tags": [
+    {
+      "name": "admins",
+      "description": "Secured Admin-only calls"
+    },
+    {
+      "name": "developers",
+      "description": "Operations available to regular developers"
+    }
+  ],
+  "paths": {
+    "/api/tasks": {
+      "get": {
+        "tags": [],
+        "summary": "Your GET endpoint",
+        "operationId": "get-api-tasks",
+        "parameters": [
+          {
+            "name": "title",
+            "in": "header",
+            "description": "titulo",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "description",
+            "in": "header",
+            "description": "descripcion",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "completed",
+            "in": "header",
+            "description": "estado",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "put": {
+        "tags": [],
+        "summary": "Your PUT endpoint",
+        "operationId": "put-api-tasks",
+        "responses": {}
+      },
+      "post": {
+        "tags": [],
+        "summary": "Your POST endpoint",
+        "operationId": "post-api-tasks",
+        "responses": {}
+      },
+      "delete": {
+        "tags": [],
+        "summary": "Your DELETE endpoint",
+        "operationId": "delete-api-tasks",
+        "responses": {}
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "InventoryItem": {
+        "required": [
+          "id",
+          "manufacturer",
+          "name",
+          "releaseDate"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "example": "d290f1ee-6c54-4b01-90e6-d701748f0851"
+          },
+          "name": {
+            "type": "string",
+            "example": "Widget Adapter"
+          },
+          "releaseDate": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2016-08-29T09:12:33.001Z"
+          },
+          "manufacturer": {
+            "$ref": "#/components/schemas/Manufacturer"
+          }
+        }
+      },
+      "Manufacturer": {
+        "required": [
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "ACME Corporation"
+          },
+          "homePage": {
+            "type": "string",
+            "format": "url",
+            "example": "https://www.acme-corp.com"
+          },
+          "phone": {
+            "type": "string",
+            "example": "408-867-5309"
+          }
+        }
+      },
+      "Schema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "tasks": {
+        "title": "tasks",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "g3uzu8i7yn0zf"
+            }
+          },
+          "description": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "ad53gxu2zkqfi"
+            }
+          },
+          "completed": {
+            "type": "boolean",
+            "x-stoplight": {
+              "id": "s56vhshzbijgl"
+            }
+          }
+        }
+      }
+    }
+  }
+}
